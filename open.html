@@ -1,13 +1,18 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Open in Claude</title>
-<p>Opening Claude… <a id="l">Click here if nothing happens.</a></p>
+<style>body{font:16px system-ui,sans-serif;margin:3em;color:#ddd;background:#1f1f1f}a{color:#9ab}</style>
+<p id="m">Opening Claude…</p>
 <script>
 const id = location.hash.slice(1);
+const m = document.getElementById("m");
 if (/^local_[0-9a-f-]+$/.test(id)) {
   const url = "claude://claude.ai/epitaxy/" + id;
-  document.getElementById("l").href = url;
   location.href = url;
-  setTimeout(() => window.close(), 3000);
+  setTimeout(() => {
+    m.innerHTML = 'Opened in Claude. You can close this tab (⌘W). <a href="' + url + '">Open again</a>';
+  }, 1000);
+} else {
+  m.textContent = "No Claude session in this link.";
 }
 </script>

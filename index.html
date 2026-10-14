@@ -8,5 +8,6 @@ if (/^local_[0-9a-f-]+$/.test(id)) {
   const url = "claude://claude.ai/epitaxy/" + id;
   document.getElementById("l").href = url;
   location.href = url;
+  setTimeout(() => window.close(), 3000);
 }
 </script>
